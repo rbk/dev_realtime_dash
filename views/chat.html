@@ -1,0 +1,98 @@
+<% include _header.html %>
+
+<div id="app-box">
+    <div id="header">   
+        <nav>
+            <ul>
+                <li class="curren"><a href="#chat">Chat</a></li>
+                <!-- <li><a href="#users">Users</a></li> -->
+                <!-- <li><a href="#rooms">Rooms</a></li> -->
+                <!-- <li><a style="font-size:24px;padding:10px 15px;" href="#settings"><i class="fa fa-cog"></i></a></li> -->
+            </ul>
+            <input type="text" name="your-name" value"" placeholder="your name">
+            <button class="enable-n">Enable Notifications</button>
+            <div class="cf"></div>
+        </nav>
+    </div>
+
+    <section id="settings" class="page">
+        <h1>Settings</h1>
+        <form>
+            <div>
+                <label for="name">Nickname:</label>
+                <input id="username" name="username" type="text" autocomplete="off" class="inline">
+            </div>
+            <br>
+            <div>
+                <label>Email:</label>
+                <input type="text" class="inline">
+            </div>
+            <br>
+            <div>
+                <label>Theme:</label>
+                <select name="theme" id="theme">
+                    <option value="">Dark</option>
+                    <option value="">Light</option>
+                </select>
+            </div>
+            <br>
+            <div>
+                <label>Color:</label>
+                <input type="text" class="inline">
+            </div>
+            <br>
+            <div>
+                <label>Image:</label>
+                <input type="text" class="inline">
+            </div>
+            <br>
+            <div>
+                <label for="">Font Size</label>
+                <input type="text" class="inline">
+            </div>
+            <div>
+                <button style="color:#fff;display:block;margin: 1em auto;" id="notificationsToggle">Enable Notifications</button>
+            </div>
+        </form>
+
+    </section>
+
+    <section id="rooms" class="page">
+        <h1>Rooms</h1>
+        <ul>
+            <li>Main</li>
+            <li>Lolcats</li>
+            <li>Dev only</li>
+            <li>Art only</li>
+            <li>coming soon...</li>
+            <li>coming soon...</li>
+            <li>coming soon...</li>
+            <li>coming soon...</li>
+        </ul>
+    </section>
+
+    <section id="users" class="page"> 
+        <div class="inner">
+            <h1>Users</h1>
+            <div id="user-board">
+                <ul id="user-list"></ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="chat" class="page">
+        <div class="inner">
+            <div id="message-board">
+                <ul id="messages"></ul>
+            </div>
+            <form>
+                <input type="text" id="message" autocomplete="off" placeholder="Type here..." />
+                <button id="send-message" style="display:none;">Send</button>
+            </form>
+        </div>
+    </section>
+    <input type="hidden" id="client_nickname">
+</div>
+
+
+<% include _footer.html %>
