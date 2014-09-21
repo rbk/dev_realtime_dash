@@ -12,11 +12,15 @@ var fs           = require('fs');
 var passport     = require('passport-local');
 var LocalStrategy = require('passport-local').Strategy;
 var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+var morgan         = require('morgan');
 var multer  = require('multer');
 
 app.use(bodyParser());
 app.use(multer({ dest: './uploads/'}));
 app.use(express.static('assets'));
+app.use(methodOverride());
+// app.use(morgan('dev')); 
 app.engine('.html', require('ejs').__express);
 app.engine('.js', require('ejs').__express);
 app.set('views', __dirname + '/views');
@@ -29,9 +33,24 @@ db.once('open', function callback () {
     console.log('### Connected to MongoDB.');
 });
 
-app.get('/', function(req, res){ 
+var User = mongoose.model( 'User', {
+    username: String,
+    hashed_password: String,
+    socket_id: String,
+    session_id: String,
+    logged_in: { type: Boolean, default: false } 
+});
+var Message = mongoose.model( 'Message', {
+    name: String,
+    message: String,
+    date: { type: Date, default: Date.now }
+});
+
+app.get('/', function(req, res){
     res.render('index'); 
 });
+
+require('./routes/message.js')(app,Message);
 
 // Start server
 http.listen(port, function(){
