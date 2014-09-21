@@ -26,7 +26,7 @@ mongoose.connect('mongodb://localhost/chat');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
-    console.log('Connected to MongoDB!!!');
+    console.log('### Connected to MongoDB.');
 });
 
 app.get('/', function(req, res){ 
@@ -35,5 +35,5 @@ app.get('/', function(req, res){
 
 // Start server
 http.listen(port, function(){
-    console.log('listening on port ' + port);
+    console.log('### listening on port ' + port);
 });

@@ -1,6 +1,7 @@
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
+   Modified by Richard Keller
 */
 *, *:before, *:after {
   box-sizing: border-box;
@@ -61,180 +62,17 @@ button, input[type=submit] {
 input[type=text], textarea {
   width: 100%; }
 
-/**
- * For modern browsers
- * 1. The space content is one way to avoid an Opera bug when the
- *    contenteditable attribute is included anywhere else in the document.
- *    Otherwise it causes space to appear at the top and bottom of elements
- *    that are clearfixed.
- * 2. The use of `table` rather than `block` is only necessary if using
- *    `:before` to contain the top-margins of child elements.
- */
-.cf:before,
-.cf:after {
+.clearfix:before,
+.clearfix:after {
   content: " ";
   /* 1 */
   display: table;
   /* 2 */ }
 
-.cf:after {
+.clearfix:after {
   clear: both; }
 
-/**
- * For IE 6/7 only
- * Include this rule to trigger hasLayout and contain floats.
- */
-.cf {
+.clearfix {
   *zoom: 1; }
 
-body {
-  font-family: arial, helvetica, sans-serif;
-  font-size: 14px; }
-
-strong {
-  font-weight: bold; }
-
-h1, h2, h3, h4, h5, h6 {
-  font-weight: bold; }
-
-#app-box h1 {
-  font-size: 24px;
-  margin-bottom: 15px; }
-
-#chat {
-  background-color: red; }
-
-#users {
-  background-color: lime; }
-
-#rooms {
-  background-color: #cde7ff; }
-
-#header {
-  z-index: 999999;
-  position: relative;
-  background-color: #222; }
-
-#chat, #users, #rooms, #settings {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 60px 10px 10px;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  color: #ddd;
-  background-color: #111; }
-
-#chat {
-  padding: 0; }
-  #chat .inner {
-    position: relative;
-    height: 100%; }
-  #chat #message {
-    position: absolute;
-    bottom: 0;
-    background-color: #272727;
-    padding: 6px 18px;
-    color: #eee; }
-  #chat #send-message {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background-color: #000;
-    color: #fff; }
-  #chat #message-board {
-    height: 100%;
-    overflow-y: scroll;
-    padding-bottom: 52px;
-    padding-top: 52px; }
-    #chat #message-board::-webkit-scrollbar {
-      display: none; }
-  #chat li {
-    display: block;
-    margin-bottom: 1px; }
-    #chat li strong {
-      background-color: #777;
-      padding: 0 12px; }
-    #chat li.system {
-      background-color: #0F0F0F;
-      padding: 8px 16px;
-      color: #707070; }
-
-#users .inner {
-  position: relative;
-  height: 100%; }
-
-#app-box nav * {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; }
-#app-box nav li {
-  float: left;
-  -moz-transform: translateX(10px) skewX(-20deg);
-  -webkit-transform: translateX(10px) skewX(-20deg);
-  -o-transform: translateX(10px) skewX(-20deg);
-  -ms-transform: translateX(10px) skewX(-20deg);
-  transform: translateX(10px) skewX(-20deg);
-  border-left: 1px solid #505050; }
-  #app-box nav li:first-child {
-    border: 0; }
-  #app-box nav li:hover {
-    background-color: #333; }
-    #app-box nav li:hover a {
-      color: #fff; }
-  #app-box nav li.current {
-    background-color: #3F3F3F; }
-    #app-box nav li.current a {
-      color: #fff; }
-#app-box nav a {
-  display: block;
-  text-decoration: none;
-  padding: 15px 20px;
-  color: #8A8A8A;
-  -moz-transform: rotate(0deg) skewX(20deg);
-  -webkit-transform: rotate(0deg) skewX(20deg);
-  -o-transform: rotate(0deg) skewX(20deg);
-  -ms-transform: rotate(0deg) skewX(20deg);
-  transform: rotate(0deg) skewX(20deg); }
-  #app-box nav a:hover {
-    color: #666; }
-
-#settings label {
-  width: 90px;
-  display: inline-block;
-  text-align: center; }
-
-input.inline {
-  width: auto;
-  padding: 3px;
-  background-color: #222;
-  color: #eee; }
-
-input#name {
-  border: 1px solid #111; }
-  input#name:active, input#name:focus {
-    border: 1px solid #525252; }
-  input#name:before {
-    content: "this";
-    position: relative;
-    top: -10px;
-    background-color: #fff; }
-
-input[name="your-name"] {
-  display: inline-block;
-  width: 100px;
-  margin-left: 35px;
-  margin-top: 14px;
-  color: #eee; }
-
-.enable-n {
-  color: #eee;
-  padding: 3px; }
-  .enable-n:hover {
-    background-color: #444; }
+/*# sourceMappingURL=app.css.map */
