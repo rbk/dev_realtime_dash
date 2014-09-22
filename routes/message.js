@@ -1,4 +1,11 @@
-module.exports = function(app,Message){
+var md5 = require('MD5');
+var mongoose        = require('mongoose');
+var Message = mongoose.model( 'Message', {
+    name: String,
+    message: String,
+    date: { type: Date, default: Date.now }
+});
+module.exports = function(app){
 	app.route('/messages')
 		.get(function(req, res, next) {
 			messages = Message.find({}, function(error,messages){
@@ -8,7 +15,6 @@ module.exports = function(app,Message){
 					res.send('There was an error querying the database.');
 				}
 			});
-
 		})
 		.post(function(req, res, next) {
 			var new_message = req.body.message;
@@ -25,8 +31,9 @@ module.exports = function(app,Message){
 			}
 		})
 		.put(function(req, res, next) {
+			// update
 		})
 		.delete(function(req, res, next) {
-
+			// destroy
 		});
 }

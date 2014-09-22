@@ -1,26 +1,27 @@
-var express      = require('express');
-var app          = express();
-var http         = require('http').Server(app);
-var io           = require('socket.io')(http);
-var port         = process.env.PORT || 3001;
-var mongoose     = require('mongoose');
-var cookieParser = require('cookie-parser');
-var router       = express.Router();
-var sanitizer    = require('sanitizer');
-var md5          = require('MD5');
-var fs           = require('fs');
-var passport     = require('passport-local');
-var LocalStrategy = require('passport-local').Strategy;
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
-var morgan         = require('morgan');
-var multer  = require('multer');
+var express         = require('express');
+var app             = express();
+var http            = require('http').Server(app);
+var io              = require('socket.io')(http);
+var port            = process.env.PORT || 3001;
+var mongoose        = require('mongoose');
+var cookieParser    = require('cookie-parser');
+var router          = express.Router();
+var sanitizer       = require('sanitizer');
+var md5             = require('MD5');
+var fs              = require('fs');
+var passport        = require('passport-local');
+var LocalStrategy   = require('passport-local').Strategy;
+var bodyParser      = require('body-parser');
+var methodOverride  = require('method-override');
+var morgan          = require('morgan');
+var multer          = require('multer');
+var requirejs       = require('requirejs');
 
 app.use(bodyParser());
 app.use(multer({ dest: './uploads/'}));
 app.use(express.static('assets'));
 app.use(methodOverride());
-// app.use(morgan('dev')); 
+app.use(morgan('dev')); 
 app.engine('.html', require('ejs').__express);
 app.engine('.js', require('ejs').__express);
 app.set('views', __dirname + '/views');
@@ -40,17 +41,14 @@ var User = mongoose.model( 'User', {
     session_id: String,
     logged_in: { type: Boolean, default: false } 
 });
-var Message = mongoose.model( 'Message', {
-    name: String,
-    message: String,
-    date: { type: Date, default: Date.now }
-});
+
+
 
 app.get('/', function(req, res){
     res.render('index'); 
 });
 
-require('./routes/message.js')(app,Message);
+require('./routes/message.js')(app);
 
 // Start server
 http.listen(port, function(){
