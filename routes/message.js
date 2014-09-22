@@ -1,7 +1,10 @@
+
 var md5 = require('MD5');
-var mongoose        = require('mongoose');
+var sanitizer = require('sanitizer');
+var mongoose = require('mongoose');
+
+
 var Message = mongoose.model( 'Message', {
-    name: String,
     message: String,
     date: { type: Date, default: Date.now }
 });
@@ -18,15 +21,15 @@ module.exports = function(app){
 			});
 		})
 		.post(function(req, res, next) {
-			var new_message = req.body.message;
+			var new_message = sanitizer.escape(req.body.message);
 			if( new_message != "" ){
-				var message = new Message({name: 'noone', message: new_message });
+				var message = new Message({ message: new_message });
 				message.save(function( error, msg ){
 					if( !error ){
 						
 					}
 				});
-				res.redirect('/messages');
+				res.redirect('/');
 			} else {
 				res.redirect('/');				
 			}
