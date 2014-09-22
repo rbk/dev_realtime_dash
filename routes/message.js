@@ -5,6 +5,7 @@ var Message = mongoose.model( 'Message', {
     message: String,
     date: { type: Date, default: Date.now }
 });
+
 module.exports = function(app){
 	app.route('/messages')
 		.get(function(req, res, next) {

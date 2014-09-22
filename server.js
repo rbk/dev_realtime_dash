@@ -27,7 +27,7 @@ app.engine('.js', require('ejs').__express);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'html');
 
-mongoose.connect('mongodb://localhost/chat');
+mongoose.connect('mongodb://localhost/yack');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
@@ -42,6 +42,20 @@ var User = mongoose.model( 'User', {
     logged_in: { type: Boolean, default: false } 
 });
 
+// notes:
+/*
+
+    - enable passport auth
+    - three column layout
+        - news feeds
+        - chat
+        - todo list
+        - api console
+        - server status ( by requesting file from a server )
+
+
+*/
+
 
 
 app.get('/', function(req, res){
@@ -49,6 +63,7 @@ app.get('/', function(req, res){
 });
 
 require('./routes/message.js')(app);
+require('./socket-logic.js')(io);
 
 // Start server
 http.listen(port, function(){
