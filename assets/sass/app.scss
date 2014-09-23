@@ -4,8 +4,8 @@ body {
 	font-family: arial, helvetica, sans-serif;
 	font-size: 12px;
 	// background-color: #363636;
-	color: #fff;
-	background-image: url( http://dev.richardkeller.net/resources/Animated_fire_by_nevit.gif );
+	// color: #fff;
+	// background-image: url( http://dev.richardkeller.net/resources/Animated_fire_by_nevit.gif );
 	background-size: cover;
 	overflow: hidden;
 }
@@ -35,8 +35,9 @@ a {
 		float: left;
 		@include column-sizes();
 		& > .inner {
+			position: relative;
 			margin-right: 10px;
-			padding: 1em;
+			// padding: 1em;
 			// background-color: rgba(0,0,0,.9);
 			border: 1px solid #000;
 			&.last {
@@ -90,6 +91,7 @@ input[type=submit] {
 	}
 }
 .feeds {
+
 	.feed {
 		margin-bottom: 1em;
 		a {
@@ -136,4 +138,42 @@ input[type=submit] {
 		}
 
 	}
+}
+
+
+.add {
+	position: absolute;
+	right: 0;
+	top: 0;
+	display:block;
+	height: 25px;
+	width: 25px;
+	background-color: #000;
+	text-align: right;
+	padding-right: 3px;
+	line-height: 30px;
+	z-index: 10;
+	&:hover {
+		// background-color: #555;
+		i {
+			color: #ddd;
+		}
+	}
+	i {
+		text-align: center;
+		font-size: 22px;
+		color: #fff;
+	}
+}
+.options {
+	position: absolute;
+	top:0;
+	right: 0;
+	// padding-top: 25px;
+	padding: 25px;
+	background-color: #000;
+	width: 0;
+	height: 0;
+	color: #fff;
+
 }
