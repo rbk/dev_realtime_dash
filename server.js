@@ -58,6 +58,7 @@ app.get('/', pass.ensureAuthenticated, basic_routes.index);
 app.get('/message/new', function(req, res){
 	res.render('index');
 });
+
 // User pages
 app.get('/account', pass.ensureAuthenticated, user_routes.account);
 app.get('/login', user_routes.getlogin);
@@ -70,8 +71,7 @@ app.get('/logout', user_routes.logout);
 //   var user = new db.userModel({username: 'richard', password: 'password', email: 'richard.be.jamin@gmail.com', admin: true });
 //   user.save(function (err) {
 //       if( !err ){
-//           res.render('user_new', { message: 'New Users Created!' });
-//           res.end();
+//         res.redirect('/login', { message: 'User with name richard created.' });
 //       } 
 //   });
 // })

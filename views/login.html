@@ -1,12 +1,16 @@
-<% if (message) { %>
-<p><%= message %></p>
-<% } %>
-<form action="/login" method="post">
-	<label>Username:</label>
-	<input type="text" name="username">
-
-	<label>Password:</label>
-	<input type="password" name="password">
-
-	<input type="submit">
-</form>
+<% include _header.html %>
+	<form id="login" action="/login" method="post">
+		<div class="field">
+			<label>Username:</label>
+			<input type="text" name="username">
+		</div>
+		<div class="field">
+			<label>Password:</label>
+			<input type="password" name="password">
+		</div>
+		<div class="field">
+			<label>&nbsp;</label>
+			<input type="submit">
+		</div>
+	</form>	
+<% include _footer.html %>

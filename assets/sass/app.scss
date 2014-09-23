@@ -1,4 +1,19 @@
 @import "reset";
+
+body {
+	font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+	// background-color: #363636;
+	color: #fff;
+	background-image: url( http://dev.richardkeller.net/resources/Animated_fire_by_nevit.gif );
+	background-size: cover;
+	overflow: hidden;
+}
+a {
+	// color: #fff;
+	text-decoration: none;
+}
+
 @mixin column-sizes(){
 	@for $i from 1 through 12 {
 		&.col-#{$i} { width: percentage($i / 12 ); }
@@ -13,14 +28,112 @@
 		right:0;
 		bottom:0;
 		overflow: auto;
+		// color: #fff;
+		overflow: hidden;
 	}
 	.column {
 		float: left;
 		@include column-sizes();
-		& > div {
-			border: 2px solid #000;
+		& > .inner {
 			margin-right: 10px;
+			padding: 1em;
+			// background-color: rgba(0,0,0,.9);
+			border: 1px solid #000;
+			&.last {
+				margin-right: 0;
+			}
+		}
+	}
+}
+#login {
+	width: 354px;
+	margin: 13em auto;
+	color: #fff;
+	label {
+		width: 72px;
+	}
+	input[type=text],
+	input[type=password] {
+		background-color: #fff;
+		width: 250px;
+		padding: 8px;
+		&:hover {
+			box-shadow: 1px 2px 5px -5px #D6D6D6;
+
+		}
+	}
+}
+.field {
+	margin-bottom: 1em;
+	label {
+		display: inline-block;
+		width: 100px;
+		text-align: right;
+	}
+}
+button,
+input[type=submit] {
+	font-size: 12px;
+	padding: 8px;
+	background-color: #fff;
+	color: #000;
+	&:hover {
+		background-color: #eee;
+	}
+}
+
+.dashboard {
+	h1 {
+		margin-bottom: 10px;
+		font-size: 16px;
+		font-weight: bold;
+	}
+}
+.feeds {
+	.feed {
+		margin-bottom: 1em;
+		a {
+			display: block;
+			margin-bottom: 5px;
 		}
 	}
 }
 
+.servers {
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	li {
+		-webkit-transition: background .2s ease-in-out;
+		transition: background .2s ease-in-out;
+		overflow: hidden;
+		// background-color: blue;
+		padding: 1em;
+		display: block;
+		border-bottom: 1px solid #444;
+		// color: #fff;
+			background-color: #222;
+			color: #fff;
+	
+		&:hover {
+			background-color: #333;
+		}
+
+		span {
+			height: 10px;
+			width: 10px;
+			display: block;
+			float: right;
+			border-radius: 100%;
+			&.green {
+				background-color: lime;
+			}
+			&.red {
+				background-color: red;
+			}
+		}
+
+	}
+}

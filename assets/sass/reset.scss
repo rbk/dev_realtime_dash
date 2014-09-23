@@ -58,9 +58,15 @@ button, input[type=submit]{
   border: 1px solid #ccc;
   background: transparent;
   outline: 0;
+  box-shadow: 1px 2px 5px -2px #D6D6D6;
+
 }
-input[type=text], textarea {
+input[type=text], 
+textarea, 
+input[type=password] {
    width:100%;
+   box-shadow: 1px 1px 0px #ECECEC;
+   box-shadow: 1px 2px 5px -2px #D6D6D6;
 }
 .clearfix:before,
 .clearfix:after {
