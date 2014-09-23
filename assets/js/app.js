@@ -8,5 +8,4 @@ $(function(){
 	socket.on('connected', function(messages){
 		console.log( messages );
 	});
-
 });

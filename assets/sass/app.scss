@@ -1,2 +1,26 @@
 @import "reset";
+@mixin column-sizes(){
+	@for $i from 1 through 12 {
+		&.col-#{$i} { width: percentage($i / 12 ); }
+	}
+}
+@media only screen and ( min-width: 1024px ){
+	.dashboard {
+		padding: 10px;
+		position: absolute;
+		top:0;
+		left:0;
+		right:0;
+		bottom:0;
+		overflow: auto;
+	}
+	.column {
+		float: left;
+		@include column-sizes();
+		& > div {
+			border: 2px solid #000;
+			margin-right: 10px;
+		}
+	}
+}
 

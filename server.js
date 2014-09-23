@@ -11,8 +11,6 @@ var router          = express.Router();
 var sanitizer       = require('sanitizer');
 var md5             = require('MD5');
 var fs              = require('fs');
-
-
 var passport        = require('passport');
 var LocalStrategy   = require('passport-local').Strategy;
 var bodyParser      = require('body-parser');
@@ -56,8 +54,10 @@ app.set('view engine', 'html');
 
 
 // Basic pages
-app.get('/', basic_routes.index);
-
+app.get('/', pass.ensureAuthenticated, basic_routes.index);
+app.get('/message/new', function(req, res){
+	res.render('index');
+});
 // User pages
 app.get('/account', pass.ensureAuthenticated, user_routes.account);
 app.get('/login', user_routes.getlogin);
@@ -79,7 +79,7 @@ app.get('/logout', user_routes.logout);
 
 
 
-// require('./routes/message.js')(app);
+require('./routes/message.js')(app);
 // require('./socket-logic.js')(io);
 
 

@@ -74,3 +74,43 @@ input[type=text], textarea {
 
 .clearfix {
   *zoom: 1; }
+
+@media only screen and (min-width: 1024px) {
+  .dashboard {
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto; }
+
+  .column {
+    float: left; }
+    .column.col-1 {
+      width: 8.33333%; }
+    .column.col-2 {
+      width: 16.66667%; }
+    .column.col-3 {
+      width: 25%; }
+    .column.col-4 {
+      width: 33.33333%; }
+    .column.col-5 {
+      width: 41.66667%; }
+    .column.col-6 {
+      width: 50%; }
+    .column.col-7 {
+      width: 58.33333%; }
+    .column.col-8 {
+      width: 66.66667%; }
+    .column.col-9 {
+      width: 75%; }
+    .column.col-10 {
+      width: 83.33333%; }
+    .column.col-11 {
+      width: 91.66667%; }
+    .column.col-12 {
+      width: 100%; }
+    .column > div {
+      border: 2px solid #000;
+      margin-right: 10px; } }

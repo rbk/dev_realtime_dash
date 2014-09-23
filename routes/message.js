@@ -1,4 +1,4 @@
-
+var pass = require('./../config/pass');
 var md5 = require('MD5');
 var sanitizer = require('sanitizer');
 var mongoose = require('mongoose');
@@ -10,8 +10,8 @@ var Message = mongoose.model( 'Message', {
 });
 
 module.exports = function(app){
-	app.route('/messages')
-		.get(function(req, res, next) {
+	app.route('/messages' )
+		.get( pass.ensureAuthenticated, function(req, res, next) {
 			messages = Message.find({}, function(error,messages){
 				if( !error ){
 					res.json( messages );	
@@ -20,7 +20,7 @@ module.exports = function(app){
 				}
 			});
 		})
-		.post(function(req, res, next) {
+		.post( pass.ensureAuthenticated, function(req, res, next) {
 			var new_message = sanitizer.escape(req.body.message);
 			if( new_message != "" ){
 				var message = new Message({ message: new_message });
@@ -29,9 +29,9 @@ module.exports = function(app){
 						
 					}
 				});
-				res.redirect('/');
+				res.redirect('/messages');				
 			} else {
-				res.redirect('/');				
+				res.redirect('/message/new');
 			}
 		})
 		.put(function(req, res, next) {
