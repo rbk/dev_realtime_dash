@@ -1,13 +1,6 @@
 $(function(){
 	console.log( 'App.js Ready' );
 
-	var socket = io();
-	socket.on('your socket id', function(id){
-		console.log( 'Your socket id:' + id );
-	});
-	socket.on('connected', function(messages){
-		console.log( messages );
-	});
 	function column_heights(){
 		$('.column .inner').fadeIn();
 		$('.column .inner').animate({'height': $(window).height() - 20 }, { queue: false });

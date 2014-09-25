@@ -5,7 +5,7 @@ exports.account = function(req, res) {
 };
 
 exports.getlogin = function(req, res) {
-  res.render('login', { user: req.user, message: req.session.messages });
+  res.render('logged_out', { user: req.user, message: req.session.messages });
 };
 
 exports.admin = function(req, res) {
