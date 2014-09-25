@@ -1,4 +1,11 @@
 <% include _header.html %>
+<script>
+	
+	var username = '<%=  user.username %>';
+	var id = '<%=  user.id %>';
+	
+</script>
+<div id="username" data-user="<%= user.username %>"></div>
 
 <div class="dashboard">
 	<div class="row clearfix">
@@ -10,31 +17,42 @@
 				<div class="options">
 					<ul>
 						<li>Feed title</li>
-						<li>Feed Url</li>
+						<li>https://status.digitalocean.com/rss</li>
 						<li>CRUD</li>
 					</ul>
+					<form action="/feed" method="POST">					
+						<input type="text" name="feed_url" placeholder="Feed Url">
+						<input type="text" name="feed_title" placeholder="Feed title">
+						<input type="submit" value="Add Feed">
+					</form>
 				</div>
 				<div class="feeds">
 					<!-- https://developers.google.com/apis-explorer/?csw=1#p/ -->
 				</div>
-				<!-- <input type="text" placeholder="add feed"> -->
-				<!-- <input type="submit" value="Add Feed"> -->
 			</div>
 		</div>
 		<div class="column col-5">
 			<div class="inner">
-				
+
 				<div class="add"><i class="fa fa-cog"></i></div>
 				<div class="options"></div>
 
 				<div class="chat">
-					<h1>Chat</h1>
-					<p>Chat room</p>
-					<br>
+					<h1 class="module-name">Chat</h1>
+					<div id="message-board">
+						<ul id="messages"></ul>
+					</div>
+					<form>
+						<input type="text" id="message" autocomplete="off" placeholder="Type here..." />
+						<button id="send-message">Send</button>
+					</form>	
+					<div id="active-users">
+						<ul id="user-list"></ul>
+					</div>
 				</div>
 				<div class="console">
-					<h1>Api Console</h1>
-					<p>Idea is to make Api calls ... </p>
+					<!-- <h1>Api Console</h1> -->
+					<!-- <p>Idea is to make Api calls ... </p> -->
 				</div>
 			</div>
 		</div>
@@ -49,15 +67,33 @@
 					<p>Maybe link google task list.</p>
 					<br>
 					<ul>
-						<li>this</li>
-						<li>that</li>
-						<li>other</li>
-						<li>this</li>
-						<li>that</li>
-						<li>other</li>
-						<li>this</li>
-						<li>that</li>
-						<li>other</li>
+						<li>this this this</li>
+						<li>that that that</li>
+						<li>other other other</li>
+						<li>this this this</li>
+						<li>that that that</li>
+						<li>other other other</li>
+						<li>this this this</li>
+						<li>that that that</li>
+						<li>other other other</li>
+						<li>this this this</li>
+						<li>that that that</li>
+						<li>other other other</li>
+						<li>this this this</li>
+						<li>that that that</li>
+						<li>other other other</li>
+						<li>this this this</li>
+						<li>that that that</li>
+						<li>other other other</li>
+						<li>this this this</li>
+						<li>that that that</li>
+						<li>other other other</li>
+						<li>this this this</li>
+						<li>that that that</li>
+						<li>other other other</li>
+						<li>this this this</li>
+						<li>that that that</li>
+						<li>other other other</li>
 					</ul>
 				</div>
 				<br>
@@ -75,7 +111,4 @@
 		</div>
 	</div>
 </div>
-
-
-	
 <% include _footer.html %>
