@@ -31,3 +31,10 @@ exports.logout = function(req, res) {
   req.logout();
   res.redirect('/login');
 };
+
+
+// Need user logged in collection here to track people for the chat
+// When seesion expires, log user out!!!
+// just track with socketio
+// nevermind. socket io logic will interact with own collection besides this.
+// keep this as main login auth since nobody can access main page without logged in status! Yay.

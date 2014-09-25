@@ -1,75 +1,59 @@
 var mongoose = require('mongoose');
-var Message = mongoose.model( 'Message' );
+var sanitizer    = require('sanitizer');
+
+var ChatUser = mongoose.model( 'ChatUser', {
+	username: { type: String, required: true, unique: true, Default: 'Guest' + Math.floor(Math.random()*10000) },
+	socket_id: String
+});
+var Message = mongoose.model( 'Message', {
+    username: String,
+    message: String,
+    date: { type: Date, default: Date.now }
+});
+
 
 module.exports = function(io){
 	io.on('connection', function(socket){
 	    socket.emit('your socket id', socket.id);
 
-	    // Send all messages to client as object
 	    Message.find({}).sort('date').limit(100).exec(function (err, messages) {
 	        if (err) return console.error(err);
 	        socket.emit('connected', messages);
 	    });
 
+	    socket.on('new_user', function(username){
+    		ChatUser.update({username: username}, { $set: { socket_id: socket.id }}, function(err, user){
+    			if(err){return false};
+    			if( user == 0 ){
+			    	var new_user = new ChatUser({ username: username, socket_id: socket.id });
+			    	new_user.save(function( err, user ){
+			    		if(err){return false;}
+	    				rbk_update_users_list();
+			    	});    				
+    			}
+    		});
+	    });
 
-	    // Someone sends a message
-	    // socket.on('chat message', function(data){
-	    //     var sanitized_message = sanitizer.escape(data.message);
-	    //     var message = new Message({ name: data.username, message: sanitized_message });
-	    //     // Save Message to MongoDB
-	    //     message.save(function (err) {
-	    //         // Handle errors ***
-	    //         if( err ){
-	    //             io.emit('chat message', 'Something went wrong while saving your message');
-	    //         } else {
-	    //             // Send message to all sockets including yours!
-	    //             io.emit('chat message', { username: data.username, message: sanitized_message });
-	    //             socket.broadcast.emit('notify others', { username: data.username, message: sanitized_message });
-	    //             console.log('SAVE MESSAGE')
-	    //         }
-	    //     });
-	    // });
+	    socket.on('chat message', function(data){
+	        var sanitized_message = sanitizer.escape(data.message);
+	        var message = new Message({ username: data.username, message: sanitized_message });
+	        message.save(function (err) {
+	        	if(err){return};
+	            io.emit('chat message', { username: data.username, message: sanitized_message });
+	            //Notifications...// socket.broadcast.emit('notify others', { username: data.username, message: sanitized_message });
+	        });
+	    });
 
-	    // socket.on('set username', function(username){
-	    //     var user = User.find({username: username });
-	    //     if( !user ){
-	    //         var user = new User({username: sanitizer.escape(username), socket_id: socket.id});
-	    //         user.save(function(err){
-	    //             if( !err ){
-	    //                 rbk_update_users_list();
-	    //                 io.emit('user joined', username);
-	    //             }
-	    //         });
-	    //     } else {
-	    //     // console.log(username)
-	    //         User.update({ id: username }, { username: username }, { multi: false }, function( err, doc ){
-	    //             console.log(err )
-	    //             if( !err ){
+	    socket.on('disconnect', function( res ){
+	    	// console.log( res );
+            ChatUser.remove({socket_id: socket.id}, function(err){
+            	if(err){return};
+                rbk_update_users_list();
+            });	            
+	    });
 
-	    //             }
-	    //         });
-	    //         rbk_update_users_list();
-	    //     }
-	    // });
-	    // socket.on('disconnect', function( res ){
-	    //     var user = User.find({socket_id:socket.id}, function(err,user){
-	    //         if( !err && user[0] ){
-	    //             io.emit('user left', user[0].username);
-	    //             User.remove({socket_id: socket.id}, function(err){
-	    //                 rbk_update_users_list();
-	    //             });
-	    //         } else {
-	    //             console.log( 'didn\'t find user' );
-	    //         }
-	    //     });
-	    // });
-
-	    // function rbk_update_users_list(  ){
-	    //     User.find({},function (err, users) {
-	    //         if( !err ){
-	    //             io.emit( 'update user list', users);
-	    //         }
-	    //     });
-	    // }
+	    function rbk_update_users_list(){
+	        ChatUser.find({},function (err, users) { if( !err ){ io.emit( 'update user list', users); } });
+	    }
 	}); // end io connect
 }

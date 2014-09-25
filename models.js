@@ -26,6 +26,10 @@ function define_models( mongoose ) {
 	    duration: Number,
 	    logged_in: { type: Boolean, default: false } 
 	});
+	var ChatUser = mongoose.model( 'ChatUser' {
+		username: { type: String, required: true, unique: true, Default: 'Guest' + Math.floor(Math.random()*10000) },
+		count: Number
+	});
 
 }
 module.exports = define_models;

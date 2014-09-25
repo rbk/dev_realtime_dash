@@ -178,3 +178,10 @@ input[type=submit] {
 	color: #fff;
 
 }
+
+
+#user-list, #messages {
+	li, strong {
+		text-transform:capitalize;
+	}
+}

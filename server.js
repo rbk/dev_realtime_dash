@@ -75,7 +75,7 @@ app.get('/logout', user_routes.logout);
 //   });
 // })
 
-require('./routes/message.js')(app);
+// require('./routes/message.js')(app);
 require('./socket-logic.js')(io);
 
 http.listen(port, function(){
