@@ -67,7 +67,7 @@ app.get('/logout', user_routes.logout);
 // app.get('/admin', pass.ensureAuthenticated, pass.ensureAdmin(), user_routes.admin);
 
 // app.get('/user/new', function(req,res){
-//   var user = new db.userModel({username: 'richard', password: 'password', email: 'richard.be.jamin@gmail.com', admin: true });
+//   var user = new db.userModel({username: 'mason', password: 'password', email: 'mason@gurustu.co', admin: true });
 //   user.save(function (err) {
 //       if( !err ){
 //         res.redirect('/login', { message: 'User with name richard created.' });
@@ -77,7 +77,7 @@ app.get('/logout', user_routes.logout);
 
 // require('./routes/message.js')(app);
 require('./routes/feeds.js')(app);
-require('./socket-logic.js')(io);
+require('./chat.io.js')(io);
 
 http.listen(port, function(){
     console.log('### listening on port ' + port);

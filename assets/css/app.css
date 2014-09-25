@@ -129,7 +129,8 @@ a {
     .column > .inner {
       position: relative;
       margin-right: 10px;
-      border: 1px solid #000; }
+      padding: 1em;
+      border: 1px solid #999; }
       .column > .inner.last {
         margin-right: 0; } }
 #login {
@@ -156,10 +157,11 @@ a {
 
 button,
 input[type=submit] {
-  font-size: 12px;
-  padding: 8px;
+  padding: 8px 12px;
   background-color: #fff;
-  color: #000; }
+  color: #aaa;
+  box-shadow: none;
+  font-size: 12.7px; }
   button:hover,
   input[type=submit]:hover {
     background-color: #eee; }
@@ -208,7 +210,6 @@ input[type=submit] {
   display: block;
   height: 25px;
   width: 25px;
-  background-color: #000;
   text-align: right;
   padding-right: 3px;
   line-height: 30px;
@@ -218,21 +219,18 @@ input[type=submit] {
   .add i {
     text-align: center;
     font-size: 22px;
-    color: #fff; }
+    color: #ddd; }
 
 .options {
   display: none;
+  width: 0;
+  height: 0;
+  padding: 25px;
   position: absolute;
   top: 0;
   right: 0;
-  padding: 25px;
   background-color: #000;
-  color: #fff;
-  width: 0;
-  height: 0;
-  display: block;
-  width: 100%;
-  height: 100%; }
+  color: #fff; }
 
 .username {
   text-transform: capitalize; }
