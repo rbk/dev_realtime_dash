@@ -129,12 +129,9 @@ input[type=submit] {
 			display: block;
 			float: right;
 			border-radius: 100%;
-			&.green {
-				background-color: lime;
-			}
-			&.red {
-				background-color: red;
-			}
+			&.green { background-color: lime; }
+			&.red { background-color: red; }
+			&.yellow { background-color: yellow; }
 		}
 
 	}
@@ -166,6 +163,7 @@ input[type=submit] {
 	}
 }
 .options {
+	display:none;
 	position: absolute;
 	top:0;
 	right: 0;
@@ -175,5 +173,12 @@ input[type=submit] {
 	width: 0;
 	height: 0;
 	color: #fff;
-
+	// -webkit-transition: all .2s ease-in-out;
+	// transition: all .2s ease-in-out;
+	overflow-x: auto;
+	&.active {
+		// display: block;
+		// height:100%;
+		// width: 100%;
+	}
 }

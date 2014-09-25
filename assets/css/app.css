@@ -200,6 +200,8 @@ input[type=submit] {
       background-color: lime; }
     .servers li span.red {
       background-color: red; }
+    .servers li span.yellow {
+      background-color: yellow; }
 
 .add {
   position: absolute;
@@ -221,6 +223,7 @@ input[type=submit] {
     color: #fff; }
 
 .options {
+  display: none;
   position: absolute;
   top: 0;
   right: 0;
@@ -228,6 +231,5 @@ input[type=submit] {
   background-color: #000;
   width: 0;
   height: 0;
-  color: #fff; }
-
-/*# sourceMappingURL=app.css.map */
+  color: #fff;
+  overflow-x: auto; }
