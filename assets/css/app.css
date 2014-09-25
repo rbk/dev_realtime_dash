@@ -221,16 +221,20 @@ input[type=submit] {
     color: #fff; }
 
 .options {
+  display: none;
   position: absolute;
   top: 0;
   right: 0;
   padding: 25px;
   background-color: #000;
+  color: #fff;
   width: 0;
   height: 0;
-  color: #fff; }
+  display: block;
+  width: 100%;
+  height: 100%; }
 
-#user-list li, #user-list strong, #messages li, #messages strong {
+.username {
   text-transform: capitalize; }
 
 /*# sourceMappingURL=app.css.map */

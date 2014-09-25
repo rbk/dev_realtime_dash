@@ -45,13 +45,11 @@ module.exports = function(io){
 	    });
 
 	    socket.on('disconnect', function( res ){
-	    	// console.log( res );
             ChatUser.remove({socket_id: socket.id}, function(err){
             	if(err){return};
                 rbk_update_users_list();
             });	            
 	    });
-
 	    function rbk_update_users_list(){
 	        ChatUser.find({},function (err, users) { if( !err ){ io.emit( 'update user list', users); } });
 	    }

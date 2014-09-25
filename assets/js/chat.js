@@ -15,7 +15,7 @@ $(function(){
 	socket.on('update user list',function(users){
 		$('#user-list li').remove();
 		for( var i=0;i<users.length;i++ ){
-			$('#user-list').append('<li>'+users[i].username+'</li>');
+			$('#user-list').append('<li class="username">'+users[i].username+'</li>');
 		}
 	});
 	socket.on('chat message', function(data){
@@ -32,7 +32,7 @@ $(function(){
 		return false;
 	});
 	function rbk_message( name, msg ){
-		var message_tempate = '<li><strong>{{name}}</strong>:&nbsp;{{message}}</li>';
+		var message_tempate = '<li><strong class="username">{{name}}</strong>:&nbsp;{{message}}</li>';
 		message_tempate = message_tempate.replace('{{name}}', name );
 		var new_message = message_tempate.replace('{{message}}', msg );
 		$('#messages').append(new_message);

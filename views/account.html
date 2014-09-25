@@ -2,6 +2,7 @@
 <script>
 	
 	var username = '<%=  user.username %>';
+	var id = '<%=  user.id %>';
 	
 </script>
 <div id="username" data-user="<%= user.username %>"></div>
@@ -13,47 +14,45 @@
 				<div class="add">
 					<i class="fa fa-cog"></i>
 				</div>
-				<div class="options" style="display:none;">
+				<div class="options">
 					<ul>
 						<li>Feed title</li>
 						<li>https://status.digitalocean.com/rss</li>
 						<li>CRUD</li>
 					</ul>
+					<form action="/feed" method="POST">					
+						<input type="text" name="feed_url" placeholder="Feed Url">
+						<input type="text" name="feed_title" placeholder="Feed title">
+						<input type="submit" value="Add Feed">
+					</form>
 				</div>
 				<div class="feeds">
 					<!-- https://developers.google.com/apis-explorer/?csw=1#p/ -->
 				</div>
-				<!-- <input type="text" placeholder="add feed"> -->
-				<!-- <input type="submit" value="Add Feed"> -->
 			</div>
 		</div>
 		<div class="column col-5">
 			<div class="inner">
-				
+
 				<div class="add"><i class="fa fa-cog"></i></div>
 				<div class="options" style="display:none;"></div>
 
 				<div class="chat">
 					<h1 class="module-name">Chat</h1>
-					<h1>Message Board</h1>
 					<div id="message-board">
 						<ul id="messages"></ul>
 					</div>
-
 					<form>
 						<input type="text" id="message" autocomplete="off" placeholder="Type here..." />
 						<button id="send-message">Send</button>
 					</form>	
-
 					<div id="active-users">
-						<h1>Active Users</h1>
 						<ul id="user-list"></ul>
 					</div>
-
 				</div>
 				<div class="console">
-					<h1>Api Console</h1>
-					<p>Idea is to make Api calls ... </p>
+					<!-- <h1>Api Console</h1> -->
+					<!-- <p>Idea is to make Api calls ... </p> -->
 				</div>
 			</div>
 		</div>
