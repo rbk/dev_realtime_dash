@@ -147,6 +147,16 @@ a {
     #login input[type=text]:hover,
     #login input[type=password]:hover {
       box-shadow: 1px 2px 5px -5px #D6D6D6; }
+  #login button,
+  #login input[type=submit] {
+    padding: 8px 12px;
+    background-color: #fff;
+    color: #aaa;
+    box-shadow: none;
+    font-size: 12.7px; }
+    #login button:hover,
+    #login input[type=submit]:hover {
+      background-color: #eee; }
 
 .field {
   margin-bottom: 1em; }
@@ -154,17 +164,6 @@ a {
     display: inline-block;
     width: 100px;
     text-align: right; }
-
-button,
-input[type=submit] {
-  padding: 8px 12px;
-  background-color: #fff;
-  color: #aaa;
-  box-shadow: none;
-  font-size: 12.7px; }
-  button:hover,
-  input[type=submit]:hover {
-    background-color: #eee; }
 
 .dashboard h1 {
   margin-bottom: 10px;
@@ -231,11 +230,68 @@ input[type=submit] {
   position: absolute;
   top: 0;
   right: 0;
-  background-color: #000;
-  color: #fff;
-  -webkit-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
-  overflow-x: auto; }
+  background-color: #222;
+  color: #fff; }
 
 .username {
   text-transform: capitalize; }
+
+.dark {
+  background-color: #222;
+  color: #eee; }
+  .dark input[type=text],
+  .dark input[type=password],
+  .dark textarea {
+    background-color: #FFF;
+    box-shadow: none;
+    color: #222;
+    margin-bottom: 3px;
+    padding: 3px; }
+  .dark input[type=submit],
+  .dark button,
+  .dark .button {
+    background-color: #575757;
+    box-shadow: none;
+    color: #ccc;
+    font-size: 12.7px;
+    padding: 4px 12px;
+    -webkit-transition: all .2s ease-in-out; }
+    .dark input[type=submit]:hover,
+    .dark button:hover,
+    .dark .button:hover {
+      background-color: #757575;
+      color: #FFF; }
+
+.light input[type=text],
+.light input[type=password],
+.light textarea {
+  background-color: #FFF;
+  box-shadow: none;
+  color: #222;
+  margin-bottom: 3px;
+  padding: 5px; }
+.light input[type=submit],
+.light button,
+.light .button {
+  background-color: #fff;
+  box-shadow: none;
+  color: #4E4E4E;
+  font-size: 12.7px;
+  padding: 4px 12px;
+  -webkit-transition: all .2s ease-in-out; }
+  .light input[type=submit]:hover,
+  .light button:hover,
+  .light .button:hover {
+    background-color: #eee;
+    color: #4e4e4e; }
+
+#message-board {
+  float: right;
+  width: 83%; }
+
+#active-users {
+  width: 17%;
+  float: left; }
+
+#chat-input {
+  margin-left: 17%; }

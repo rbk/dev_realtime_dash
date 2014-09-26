@@ -14,12 +14,16 @@
 				<div class="add">
 					<i class="fa fa-cog"></i>
 				</div>
-				<div class="options">
+				<div class="options dark">
+					<h1>Current Feeds<small><i> click to edit</i></small></h1>
+					
 					<ul>
-						<li>Feed title</li>
+						<li>https://news.ycombinator.com/rss</li>
 						<li>https://status.digitalocean.com/rss</li>
-						<li>CRUD</li>
+						<li>//news.google.com/?output=rss</li>
 					</ul>
+					<br>
+					<h1>Add Feed</h1>
 					<form action="/feed" method="POST">					
 						<input type="text" name="feed_url" placeholder="Feed Url">
 						<input type="text" name="feed_title" placeholder="Feed title">
@@ -32,7 +36,7 @@
 			</div>
 		</div>
 		<div class="column col-5">
-			<div class="inner">
+			<div class="inner light">
 
 				<div class="add"><i class="fa fa-cog"></i></div>
 				<div class="options"></div>
@@ -43,12 +47,14 @@
 						<ul id="messages"></ul>
 					</div>
 					<form>
-						<input type="text" id="message" autocomplete="off" placeholder="Type here..." />
-						<button id="send-message">Send</button>
-					</form>	
 					<div id="active-users">
 						<ul id="user-list"></ul>
 					</div>
+					<div id="chat-input">
+							<input type="text" id="message" autocomplete="off" placeholder="Type here..." />
+							<button id="send-message">Send</button>
+					</div>
+					</form>	
 				</div>
 				<div class="console">
 					<!-- <h1>Api Console</h1> -->
